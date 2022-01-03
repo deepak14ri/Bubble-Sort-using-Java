@@ -1,28 +1,34 @@
-import java.io.*;
 import java.util.*;
+import java.io.*;
 
-public class Main
-{
-    public static void main(String[] args) {
-	    int arr[] = {1,3,8,5,9};
-        for(int i=0;i<arr.length-1;i++){
-            int smaller = i;
-            for(int j=i+1;j<arr.length;j++){
-                if(arr[smaller]>arr[j]){
-                    smaller = j;
+public class Main {
+
+    public  static void insertionSort(int[] ar, int n) {
+            for(int j=0;j<n-1;j++){
+                for(int k=0;k<n-j-1;k++){
+                    if(ar[k]>ar[k+1]){
+                        int temp = ar[k];
+                        ar[k] = ar[k+1];
+                        ar[k+1] = temp;
+                    }
                 }
             }
-            int temp = arr[smaller];
-            arr[smaller] = arr[i];
-            arr[i] = temp;
-        }
-        printArray(arr);
+            printArray(ar);
     }
-	public static int printArray(int arr[]) {
-	    for(int i=0;i<arr.length;i++){
-	        System.out.print(arr[i]+" ");
-	    }
-		System.out.println();
-		return 0;
-	}
-}
+    public static void printArray(int[] ar) {
+         for(int n: ar){
+            System.out.print(n+" ");
+         }
+           System.out.println("");
+      }
+
+      public static void main(String[] args) {
+           Scanner in = new Scanner(System.in);
+           int n = in.nextInt();
+           int[] ar = new int[n];
+           for(int i=0;i<n;i++){
+              ar[i]=in.nextInt(); 
+           }
+           insertionSort(ar,n);
+       }    
+   }
